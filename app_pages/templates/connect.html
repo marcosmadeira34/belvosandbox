@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exemplo do Widget Belvo Connect</title>
+    <script src="https://cdn.belvo.io/belvo-widget-1-stable.js" async></script>
+</head>
+<body>
+    <h1>Exemplo do Widget Belvo Connect</h1>
+    <p>Clique no botão abaixo para iniciar o processo de incorporação do widget Belvo Connect:</p>
+
+    <div id="belvo"></div> <!-- Placeholder para o widget Belvo Connect -->
+    <button id="embedWidgetButton">Incorporar Widget</button>
+
+    <script type="text/javascript">
+        function successCallbackFunction(link, institution) {
+            // Do something with the link and institution,
+            // such as associate it with your registered user in your database.
+        }
+        
+        function onExitCallbackFunction(data) {
+            // Do something with the exit data.
+        }
+        
+        function onEventCallbackFunction(data) {
+            // Do something with the event data.
+        }
+        
+        function openBelvoWidget(accessToken) {
+            belvoSDK.createWidget(accessToken, {
+                // Add your startup configuration here.
+                callback: (link, institution) => successCallbackFunction(link, institution),
+                onExit: (data) => onExitCallbackFunction(data),
+                onEvent: (data) => onEventCallbackFunction(data)
+            }).build();
+        }
+        
+        document.getElementById("embedWidgetButton").addEventListener("click", function() {
+            const accessToken = "{{ access_token }}"; // Obtendo o token de acesso do contexto do Django.
+            openBelvoWidget(accessToken); // Uma vez que o token de acesso é obtido, o widget é iniciado.
+        });
+    </script>
+
+
+<!--Callbacks-->
+<script type="text/javascript">
+    function successCallbackFunction(link, institution) {
+        // Do something with the link and institution, 
+        // such as associate it with your registered user in your database. 
+      }
+  
+  function openBelvoWidget(accessToken) {
+    
+      belvoSDK.createWidget(accessToken, {
+      
+        callback: (link, institution) => successCallbackFunction(link, institution),
+      
+  
+      }).build();
+  }   
+  </script>
+
+</body>
+</html>
