@@ -1,61 +1,54 @@
 {% load static %}
-<!--carrega o arquivo de filtros customizados para cpf e cnpj -->
-
-
-<!doctype html>
+<!DOCTYPE html>
 <html class="fixed sidebar-left-collapsed">
-
 <head>
-
     <!-- Basic -->
     <meta charset="UTF-8">
-
     <title>I-Extrato | Integração Bancária Automática</title>
+    <!-- Biblioteca Belvo carregada estaticamente -->
+    <script src="https://cdn.belvo.io/belvo-widget-1-stable.js"></script>
     <meta name="keywords" content="HTML5 Admin Template" />
-    <meta name="description" content="Porto Admin - Responsive HTML5 Template">
-    <meta name="author" content="okler.net">
+    <meta name="description">
+    <meta name="author">
 
     <!-- Mobile Metas -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		
+		<!-- Icons -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <!-- Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<!-- Web Fonts  -->
+		<link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800|Shadows+Into+Light" rel="stylesheet" type="text/css">
 
-    <!-- Web Fonts  -->
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800|Shadows+Into+Light"
-        rel="stylesheet" type="text/css">
+		<!-- Vendor CSS -->
+		<link rel="stylesheet" href='{% static "assets/vendor/bootstrap/css/bootstrap.css" %}'/>
+		<!-- <link rel="stylesheet" href='{% static "assets/vendor/font-awesome/css/font-awesome.css" %}'/> -->
+		<link rel="stylesheet" href='{% static "assets/vendor/magnific-popup/magnific-popup.css" %}'/>
+		<link rel="stylesheet" href='{% static "assets/vendor/bootstrap-datepicker/css/datepicker3.css" %}'/>
 
-    <!-- Vendor CSS -->
-    <link rel="stylesheet" href='{% static "assets/vendor/bootstrap/css/bootstrap.css" %}' />
-    <link rel="stylesheet" href='{% static "assets/vendor/font-awesome/css/font-awesome.css" %}' />
-    <link rel="stylesheet" href='{% static "assets/vendor/magnific-popup/magnific-popup.css" %}' />
-    <link rel="stylesheet" href='{% static "assets/vendor/bootstrap-datepicker/css/datepicker3.css" %}' />
+		<!-- Specific Page Vendor CSS -->
+		<link rel="stylesheet" href='{% static "assets/vendor/jquery-ui/css/ui-lightness/jquery-ui-1.10.4.custom.css" %}'/>
+		<link rel="stylesheet" href='{% static "assets/vendor/bootstrap-multiselect/bootstrap-multiselect.css" %}'/>
+		<link rel="stylesheet" href='{% static "assets/vendor/morris/morris.css" %}'/>
 
-    <!-- Specific Page Vendor CSS -->
-    <link rel="stylesheet" href='{% static "assets/vendor/bootstrap-fileupload/bootstrap-fileupload.min.css" %}' />
+		<!-- Theme CSS -->
+		<link rel="stylesheet" href='{% static "assets/stylesheets/theme.css" %}'/>
 
-    <!-- Theme CSS -->
-    <link rel="stylesheet" href='{% static "assets/stylesheets/theme.css" %}' />
+		<!-- Skin CSS -->
+		<link rel="stylesheet" href='{% static "assets/stylesheets/skins/default.css" %}'/>
 
-    <!-- Skin CSS -->
-    <link rel="stylesheet" href='{% static "assets/stylesheets/skins/default.css" %}' />
+		{% comment %} <!-- Theme Custom CSS -->
+		<link rel="stylesheet" href='{% static "assets/stylesheets/theme-custom.css" %}'/> {% endcomment %}
 
-    <!-- Theme Custom CSS -->
-    <link rel="stylesheet" href='{% static "assets/stylesheets/theme-custom.css" %}'>
-
-    <!-- Head Libs -->
-    <script src='{% static "assets/vendor/modernizr/modernizr.js" %}'></script>
-
+		<!-- Head Libs -->
+		<script src='{% static "assets/vendor/modernizr/modernizr.js" %}'></script>
 </head>
-
 <body>
     <section class="body">
-
         <!-- start: header -->
         <header class="header">
             <div class="logo-container">
                 <a href='{% static "assets/vendor/img/konteg.png" %}' class="logo">
-
                 </a>
                 <div class="visible-xs toggle-sidebar-left" data-toggle-class="sidebar-left-opened" data-target="html"
                     data-fire-event="sidebar-left-opened">
@@ -66,10 +59,8 @@
         <!-- end: header -->
 
         <div class="inner-wrapper">
-
             <!-- start: sidebar -->
             <aside id="sidebar-left" class="sidebar-left">
-
                 <div class="sidebar-header">
                     <div class="sidebar-title">
                         Menu
@@ -79,7 +70,6 @@
                         <i class="fa fa-bars" aria-label="Toggle sidebar"></i>
                     </div>
                 </div>
-
                 <div class="nano">
                     <div class="nano-content">
                         <nav id="menu" class="nav-main" role="navigation">
@@ -142,10 +132,8 @@
                                                 extratos bancários
                                             </a>
                                         </li>
-
                                     </ul>
                                 </li>
-
                                 <li class="children">
                                     {% if user.is_authenticated %}
                                     <a href="">
@@ -154,17 +142,16 @@
                                     </a>
                                     {% endif %}
                                 </li>
+                            </ul>
                         </nav>
                     </div>
                 </div>
             </aside>
             <!-- end: sidebar -->
-            <!-- end: sidebar -->
 
             <section role="main" class="content-body">
                 <header class="page-header">
                     <h2>Integração Bancária</h2>
-
                     <div class="right-wrapper pull-right">
                         <ol class="breadcrumbs">
                             <li>
@@ -175,7 +162,6 @@
                             <li><span>Integração Bancária</span></li>
                             <li><span>automática</span></li>
                         </ol>
-
                         <a class="sidebar-right-toggle"><i class="fa fa-chevron-left"></i></a>
                     </div>
                 </header>
@@ -189,16 +175,10 @@
                                     <a href="#" class="fa fa-caret-down"></a>
                                     <a href="#" class="fa fa-times"></a>
                                 </div>
-
                                 <h2 class="panel-title">Integração automática de extratos</h2>
-
                             </header>
-
-
-
                             <div class="panel-body">
-
-                                <!--Alerta de conta já cadastrada-->
+                                <!-- Alerta de conta já cadastrada -->
                                 {% if message.e %}
                                 <div class="alert alert-{{ message.tags }}">
                                     {{ message.e }}
@@ -216,94 +196,84 @@
                                 <form class="form-horizontal form-bordered" action="." method="POST">
                                     {% csrf_token %}
                                     <div class="row">
-                                        <div class="'col-lg-12">
+                                        <div class="col-lg-12">
                                             <div class="row">
-
                                                 <div class="col-md-12 header-center text-center">
-                                                    <h2 class="panel-title text-center">Integrar novas contas bancárias
-                                                    </h2>
-                                                    </br>
+                                                    <h2 class="panel-title text-center">Integrar novas contas bancárias</h2>
+                                                    <br>
                                                     <p class="text-center" style="font-size: 16px;">Você agora pode
-                                                        realizar a
-                                                        integração bancária e receber automaticamente os extratos
-                                                        bancários
-                                                        </br>dos seus clientes de forma ágil e segura, aumentando a
-                                                        produtividade da sua contabilidade.</br>
+                                                        realizar a integração bancária e receber automaticamente os extratos bancários
+                                                        <br>
+                                                        dos seus clientes de forma ágil e segura, aumentando a produtividade da sua contabilidade.<br>
                                                     </p>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-
                                     <div class="form-group">
-                                        <label class="col-md-3 control-label" for="inputFocus"><strong></strong></label>
                                         <div class="col-md-6">
-
-                                        </div>
-                                    </div>
-
-
-
-
-                                    <div class="form-group">
-                                        <label class="col-md-3 control-label"
-                                            for="inputFocus"><strong>Cliente</strong></label>
-                                        <div class="col-md-6">
-                                            <select name="bankCode" class="form-control mb-md" required id="bankCode">
-                                                {% for bankcode in bankcodes %}
-                                                <option value="{{ bankcode.0 }}">{{ bankcode.1 }}</option>
-                                                {% endfor %}
-                                            </select>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="form-group">
-                                        <label class="col-md-3 control-label" for="inputDefault"></label>
-                                        <div class="col-md-6">
-                                            <input type="submit" name="cadastrar" class="btn btn-success"
-                                                value="Integrar">
+                                            <!-- Placeholder para o widget Belvo Connect -->
+                                            <div id="belvo"></div>
+                                            <button id="embedWidgetButton">Começar Integração</button>
+                                            <div id="statusMessage"></div> <!-- Para exibir mensagens de status -->
                                         </div>
                                     </div>
                                 </form>
                             </div>
+                        </section>
                     </div>
                 </div>
             </section>
-    </section>
-    <!-- end: page -->
+        </section>
+        <!-- end: page -->
+        
+        <!-- Vendor -->
+<script>var accessToken = "{{ access_token }}";   </script>
+<script src='{% static "assets/javascripts/requestapi.js" %}'></script>
 
-    <!-- Vendor -->
-    <script src='{% static "assets/vendor/jquery/jquery.js" %}'></script>
-    <script src='{% static "assets/vendor/jquery-browser-mobile/jquery.browser.mobile.js" %}'></script>
-    <script src='{% static "assets/vendor/bootstrap/js/bootstrap.js" %}'></script>
-    <script src='{% static "assets/vendor/nanoscroller/nanoscroller.js" %}'></script>
-    <script src='{% static "assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.js" %}'></script>
-    <script src='{% static "assets/vendor/magnific-popup/magnific-popup.js" %}'></script>
-    <script src='{% static "assets/vendor/jquery-placeholder/jquery.placeholder.js" %}'></script>
+<script src='{% static "assets/vendor/jquery/jquery.js" %}'></script>
+<script src='{% static "assets/vendor/jquery-browser-mobile/jquery.browser.mobile.js" %}'></script>
+<script src='{% static "assets/vendor/bootstrap/js/bootstrap.js" %}'></script>
+<script src='{% static "assets/vendor/nanoscroller/nanoscroller.js" %}'></script>
+<script src='{% static "assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.js" %}'></script>
+<script src='{% static "assets/vendor/magnific-popup/magnific-popup.js" %}'></script>
+<script src='{% static "assets/vendor/jquery-placeholder/jquery.placeholder.js" %}'></script>
 
-    <!-- Specific Page Vendor -->
-    <script src='{% static "assets/vendor/jquery-autosize/jquery.autosize.js" %}'></script>
-    <script src='{% static "assets/vendor/bootstrap-fileupload/bootstrap-fileupload.min.js" %}'></script>
+<!-- Specific Page Vendor -->
+<script src='{% static "assets/vendor/jquery-ui/js/jquery-ui-1.10.4.custom.js" %}'></script>
+<script src='{% static "assets/vendor/jquery-ui-touch-punch/jquery.ui.touch-punch.js" %}'></script>
+<script src='{% static "assets/vendor/jquery-appear/jquery.appear.js" %}'></script>
+<script src='{% static "assets/vendor/bootstrap-multiselect/bootstrap-multiselect.js" %}'></script>
+<script src='{% static "assets/vendor/jquery-easypiechart/jquery.easypiechart.js" %}'></script>
+<script src='{% static "assets/vendor/flot/jquery.flot.js" %}'></script>
+<script src='{% static "assets/vendor/flot-tooltip/jquery.flot.tooltip.js" %}'></script>
+<script src='{% static "assets/vendor/flot/jquery.flot.pie.js" %}'></script>
+<script src='{% static "assets/vendor/flot/jquery.flot.categories.js" %}'></script>
+<script src='{% static "assets/vendor/flot/jquery.flot.resize.js" %}'></script>
+<script src='{% static "assets/vendor/jquery-sparkline/jquery.sparkline.js" %}'></script>
+<script src='{% static "assets/vendor/raphael/raphael.js" %}'></script>
+<script src='{% static "assets/vendor/morris/morris.js" %}'></script>
+<script src='{% static "assets/vendor/gauge/gauge.js" %}'></script>
+<script src='{% static "assets/vendor/snap-svg/snap.svg.js" %}'></script>
+<script src='{% static "assets/vendor/liquid-meter/liquid.meter.js" %}'></script>
+<script src='{% static "assets/vendor/jqvmap/jquery.vmap.js" %}'></script>
+<script src='{% static "assets/vendor/jqvmap/data/jquery.vmap.sampledata.js" %}'></script>
+{% comment %} <script src='{% static "assets/vendor/jqvmap/maps/jquery.vmap.world.js" %}'></script>
+<script src='{% static "assets/vendor/jqvmap/maps/continents/jquery.vmap.africa.js" %}'></script>
+<script src='{% static "assets/vendor/jqvmap/maps/continents/jquery.vmap.asia.js" %}'></script>
+<script src='{% static "assets/vendor/jqvmap/maps/continents/jquery.vmap.australia.js" %}'></script>
+<script src='{% static "assets/vendor/jqvmap/maps/continents/jquery.vmap.europe.js" %}'></script>
+<script src='{% static "assets/vendor/jqvmap/maps/continents/jquery.vmap.north-america.js" %}'></script>
+<script src='{% static "assets/vendor/jqvmap/maps/continents/jquery.vmap.south-america.js" %}'></script> {% endcomment %}
 
-    <!-- Theme Base, Components and Settings -->
-    <script src='{% static "assets/javascripts/theme.js" %}'></script>
+<!-- Theme Base, Components and Settings -->
+<script src='{% static "assets/javascripts/theme.js" %}'></script>
 
-    <!-- Theme Custom -->
-    <script src='{% static "assets/javascripts/theme.custom.js" %}'></script>
+<!-- Theme Custom -->
+<script src='{% static "assets/javascripts/theme.custom.js" %}'></script>
 
-    <!-- Theme Initialization Files -->
-    <script src='{% static "assets/javascripts/theme.init.js" %}'></script>
-
-    <!-- Consulta Via CEP-->
-    <script src='{% static "assets/javascripts/consulta_cep.js" %}'></script>
-
-    <!-- Consulta Via CNPJ.WS -->
-    <script src='{% static "assets/javascripts/consulta_cnpj.js" %}'></script>
-
-    <!--Jquery-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
+<!-- Theme Initialization Files -->
+<script src='{% static "assets/javascripts/theme.init.js" %}'></script>
+   
 </body>
-
 </html>
