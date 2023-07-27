@@ -1,9 +1,18 @@
 // requestapi.js
 let belvoWidget; // Variável para armazenar a instância do widget
+let linkData; // Variável para armazenar as chaves e valores do JSON retornado
 
-function successCallbackFunction(link, institution) {
+function successCallbackFunction(data) {
+    // Extrair as informações do JSON retornado
+    
+    const link = data.id;
+    const institution = data.institution;
+    // Armazenar o objeto JSON completo em linkData
+    linkData = data;          
     // Aqui você pode fazer algo com o link e a instituição,
-    // como associá-los ao usuário registrado no seu banco de dados.                                                   
+    // como associá-los ao usuário registrado no seu banco de dados.
+    console.log("Link ID:", link);
+    console.log("Institution:", institution);                                    
 }
 
 function onExitCallbackFunction(data) {
@@ -28,9 +37,9 @@ function openBelvoWidget(accessToken) {
         show_abandon_survey: false,
         external_id: '123456789',
         institution_types: ['retail'],
-        callback: (link, institution) => {
+        callback: (data) => {
             // Callback de sucesso
-            successCallbackFunction(link, institution);
+            successCallbackFunction(data);
             // Exibir mensagem de conclusão
             const statusMessage = document.getElementById("statusMessage");
             statusMessage.textContent = "Integração concluída com sucesso!";
