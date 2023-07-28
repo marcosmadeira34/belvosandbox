@@ -12,10 +12,17 @@ from belvo.client import Client
 from belvo.enums import AccessMode
 from dotenv import load_dotenv, find_dotenv
 from belvo.resources.links import Links
-from .models import LinksData
+from .models import *
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
+
 
 load_dotenv(find_dotenv())
+
+@csrf_exempt
+def webhook(request):
+    print(request.body)
+    return HttpResponse()
 
 
 def index(request):
@@ -50,10 +57,13 @@ def generate_access_token(request):
     response = render(request, 'integracao.html', {'access_token': token['access']})
     return response
         
+
 # @login_required
-def all_links(request):
-    """Retrieve all links"""
-    user_id = User.objects.get(id = request.user.id)
+def consulta_integrações(request):
+    """Retrieve all links created by the user"""
+    """ criar um datatable com um botão para atualizar os dados da tabela"""
+
+    #user_id = OfficeClientModel.objects.get(id=id)
     client = Client(os.getenv("SECRET_ID"), os.getenv("SECRET_PASSWORD"), "sandbox")
     links = client.Links.list()    
     results = list(links)
@@ -75,7 +85,37 @@ def all_links(request):
         return data
 
 
-@csrf_exempt
-def webhook(request):
-    print(request.body)
-    return HttpResponse()
+# @login_required
+# cadastro de clientes 
+def cadastro_clientes(request):
+    user = User.objects.get(id=request.user.id)
+    payload = {
+                "name": request.POST.get('name'),
+                "cpfCnpj": request.POST.get('cpfCnpj'),
+                "neighborhood": request.POST.get('neighborhood'),
+                "addressNumber": request.POST.get('addressNumber'),
+                "street": request.POST.get('street'),
+                "zipcode": request.POST.get('zipcode'),
+                "state": request.POST.get('state'),
+                "city": request.POST.get('city'),
+                "addressComplement": request.POST.get('addressComplement'),
+
+            }
+    customer = OfficeClientModel.objects.create(
+                    user = user,
+                    name=payload['name'],
+                    cpfCnpj=payload['cpfCnpj'],
+                    neighborhood=payload['neighborhood'],
+                    addressNumber=payload['addressNumber'],
+                    street=payload['street'],
+                    zipcode=payload['zipcode'],
+                    state=payload['state'],
+                    city=payload['city'],
+                    addressComplement=payload['addressComplement'],
+
+                )
+                # guarda informações do cliente no banco de dados
+    customer.save()
+    messages.success(request, 'Cliente cadastrado com sucesso!')
+    return render(request, 'form-cadastro-clientes.html', {'bankcodes':BankChoices})           
+    

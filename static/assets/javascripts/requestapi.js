@@ -40,6 +40,14 @@ function openBelvoWidget(accessToken) {
         callback: (data) => {
             // Callback de sucesso
             successCallbackFunction(data);
+            const link = data.id;
+            const institution = data.institution;
+            // Armazenar o objeto JSON completo em linkData
+            linkData = data;          
+            // Aqui você pode fazer algo com o link e a instituição,
+            // como associá-los ao usuário registrado no seu banco de dados.
+            console.log("Link ID:", link);
+            console.log("Institution:", institution);
             // Exibir mensagem de conclusão
             const statusMessage = document.getElementById("statusMessage");
             statusMessage.textContent = "Integração concluída com sucesso!";
